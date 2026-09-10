@@ -3,13 +3,13 @@ on: [push]
 
 jobs:
   build:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Echo Hello
-      run: echo "Hello, World!"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Hello
+        run: echo "Hello, World!"
       
-    - name: Show date
-      run: date
+      - name: Show date
+        run: date
 
-    - name: List files
-      run: ls -la
+      - name: List files
+        run: ls -la
