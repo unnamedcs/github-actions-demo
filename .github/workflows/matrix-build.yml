@@ -1,0 +1,30 @@
+name: Matrix build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm install
+      - name: Build project
+        run: |
+          mkdir dist
+          echo "This is the build project" > dist/build.txt
+      - name: Run tests
+        run: npm test
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        wtih:
+          name: build-asset-${{ matrix.node-version }}
+          path: dist
