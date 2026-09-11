@@ -25,6 +25,6 @@ jobs:
         run: npm test
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
-        wtih:
+        with:
           name: build-asset-${{ matrix.node-version }}
           path: dist
